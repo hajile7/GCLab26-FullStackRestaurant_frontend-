@@ -1,0 +1,25 @@
+
+<table style="text-align: left;">
+    <tr>
+        <th>Description</th>
+        <th>Restaurant</th>
+        <th>Rating</th>
+        <th>Order again?</th>
+        <th>Delete</th>
+    </tr>
+    @for(o of allOrders; track o.id) {
+    <tr>
+        <td>{{o.description}}</td>
+        <td>{{o.restaurant}}</td>
+        <td style = "text-align: center;">{{o.rating}}</td>
+        @if(o.orderAgain) {
+            <td style = "text-align: center;">✓</td>
+        }
+        @else {
+            <td></td>
+        }
+        <td style = "text-align: center;"><button (click) = "DeleteOrder(o)" >X</button></td>
+    </tr>
+}
+</table>
+<app-order-form (createEvent)="AddOrder($event)"></app-order-form>
